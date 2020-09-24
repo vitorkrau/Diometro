@@ -10,7 +10,7 @@ import SwiftUI
 
 class Time{
     static var instance = Time()
-    var sunsetSunrise : Results?
+    var sunsetSunrise : Results? = Results(sunrise: "06:00", sunset: "18:00", solarNoon: "", dayLength: "")
     
     //Get actual hour and minute
     private func getTime() -> [Int]{

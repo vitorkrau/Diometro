@@ -9,25 +9,24 @@ import Foundation
 
 var APIurl = "https://api.sunrise-sunset.org/json?"
 
-func fetchTimes() -> Result<SunriseSunset?, NetworkError> {
+func fetchTimes(completion: @escaping (Result<Results?, NetworkError>) -> Void){
     let lm = LocationViewModel()
     let url = URL(string: APIurl + "lat=\(lm.location.latitude)&lng=\(lm.location.longitude)")!
-    var result: Result<SunriseSunset?, NetworkError>!
+    //var result: Result<SunriseSunset?, NetworkError>!
     
-    let semaphore = DispatchSemaphore(value: 0)
+   // let semaphore = DispatchSemaphore(value: 0)
     
-   URLSession.shared.dataTask(with: url){ (data, _, _) in
+    URLSession.shared.dataTask(with: url){ (data, _, _) in
         if let data = data{
-            result = .success(try? JSONDecoder().decode(SunriseSunset.self, from: data))
+            let values = try? JSONDecoder().decode(SunriseSunset.self, from: data)
+            completion(.success(values?.results))
         }else{
-            result = .failure(.server)
+            completion(.failure(.server))
         }
-        semaphore.signal()
+        //semaphore.signal()
     }.resume()
     
-    semaphore.wait()
-    
-    return result
+    //semaphore.wait()
 }
 
 

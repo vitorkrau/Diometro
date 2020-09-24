@@ -11,11 +11,12 @@ struct ContentView: View{
     
     @State var showCamera: Bool = false
     @State var image: Image?
+    @State var uiImage: UIImage?
     
     var body: some View {
         NavigationView {
             if self.image != nil{
-                DayNightView(image: self.$image)
+                DayNightView(image: self.$image, uiImage: self.$uiImage)
             }
             else{
                 VStack(alignment: .center){
@@ -36,7 +37,7 @@ struct ContentView: View{
                             .frame(width: 87, height: 87)
                             .foregroundColor(.white)
                     }.fullScreenCover(isPresented: self.$showCamera, content: {
-                        CustomCameraView(image: self.$image, showCamera: self.$showCamera).edgesIgnoringSafeArea(.all)
+                        CustomCameraView(image: self.$image, showCamera: self.$showCamera, uiImage: self.$uiImage).edgesIgnoringSafeArea(.all)
                     })
                     
                 }

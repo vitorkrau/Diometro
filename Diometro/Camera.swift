@@ -2,13 +2,15 @@ import SwiftUI
 import AVFoundation
 
 struct CustomCameraView: View {
+    
     @Binding var image: Image?
-    @State var didTapCapture: Bool = false
     @Binding var showCamera: Bool
+    @Binding var uiImage: UIImage?
+    @State var didTapCapture: Bool = false
     
     var body: some View {
         ZStack(alignment: .top) {
-            CustomCameraRepresentable(image: self.$image, didTapCapture: $didTapCapture)
+            CustomCameraRepresentable(image: self.$image, didTapCapture: $didTapCapture, uiImage: self.$uiImage)
             CaptureButtonView(didTapCapture: self.$didTapCapture, showCamera: self.$showCamera)
         }
     }
@@ -19,14 +21,15 @@ struct CustomCameraRepresentable: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     @Binding var image: Image?
     @Binding var didTapCapture: Bool
+    @Binding var uiImage: UIImage?
     
-    func makeUIViewController(context: Context) -> CustomCameraController {
-        let controller = CustomCameraController()
+    func makeUIViewController(context: Context) -> AVFoundationImplementation {
+        let controller = AVFoundationImplementation()
         controller.delegate = context.coordinator
         return controller
     }
     
-    func updateUIViewController(_ cameraViewController: CustomCameraController, context: Context) {
+    func updateUIViewController(_ cameraViewController: AVFoundationImplementation, context: Context) {
         
         if(self.didTapCapture) {
             cameraViewController.didTapRecord()
@@ -49,6 +52,7 @@ struct CustomCameraRepresentable: UIViewControllerRepresentable {
             
             if let imageData = photo.fileDataRepresentation() {
                 parent.image = Image(uiImage: UIImage(data: imageData)!)
+                parent.uiImage = UIImage(data: imageData)
             }
             parent.presentationMode.wrappedValue.dismiss()
         }
@@ -56,8 +60,6 @@ struct CustomCameraRepresentable: UIViewControllerRepresentable {
 }
 
 class CustomCameraController: UIViewController {
-    
-    var image: UIImage?
     
     var captureSession = AVCaptureSession()
     var backCamera: AVCaptureDevice?
@@ -70,10 +72,8 @@ class CustomCameraController: UIViewController {
     var delegate: AVCapturePhotoCaptureDelegate?
     
     func didTapRecord() {
-        
         let settings = AVCapturePhotoSettings()
         photoOutput?.capturePhoto(with: settings, delegate: delegate!)
-        
     }
     
     override func viewDidLoad() {
@@ -96,7 +96,6 @@ class CustomCameraController: UIViewController {
     func setupDevice() {
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [AVCaptureDevice.DeviceType.builtInWideAngleCamera], mediaType: AVMediaType.video, position: AVCaptureDevice.Position.unspecified)
         for device in deviceDiscoverySession.devices {
-            
             switch device.position {
             case AVCaptureDevice.Position.front:
                 self.frontCamera = device
@@ -117,20 +116,18 @@ class CustomCameraController: UIViewController {
             photoOutput = AVCapturePhotoOutput()
             photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
             captureSession.addOutput(photoOutput!)
-            
         } catch {
             print(error)
         }
     }
     
     func setupPreviewLayer(){
-    self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-    self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
-    self.cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
-    self.cameraPreviewLayer?.frame = self.view.frame
-    self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
-    
-}
+        self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
+        self.cameraPreviewLayer?.connection?.videoOrientation = AVCaptureVideoOrientation.portrait
+        self.cameraPreviewLayer?.frame = self.view.frame
+        self.view.layer.insertSublayer(cameraPreviewLayer!, at: 0)
+    }
     
     func startRunningCaptureSession(){
         captureSession.startRunning()
@@ -180,7 +177,7 @@ struct CaptureButtonView: View {
                     }
             }
             if self.mm.z < 0.4 || self.mm.z > 1.2{
-                Text("OLHA PRO CÉU")
+                Text("OLHA PRO CEU")
                     .padding(.bottom, UIScreen.main.bounds.height - 300)
                     .font(.system(size: 50, weight: .heavy, design: .rounded))
                     .foregroundColor(.white)
@@ -192,3 +189,6 @@ struct CaptureButtonView: View {
         }
     }
 }
+
+
+

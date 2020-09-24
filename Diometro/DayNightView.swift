@@ -10,6 +10,8 @@ import SwiftUI
 
 struct DayNightView: View {
     @Binding var image: Image?
+    @Binding var uiImage: UIImage?
+    @ObservedObject var im: ImageClassifier = ImageClassifier()
     var body: some View {
         ZStack{
             if self.image != nil{
@@ -33,6 +35,12 @@ struct DayNightView: View {
                 }
                 .ignoresSafeArea()
             }
+            
+            if im.label != ""{
+                Text(im.label)
+            }
+        }.onAppear{
+            im.classify(image: self.uiImage!)
         }
         
     }

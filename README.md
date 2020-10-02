@@ -6,9 +6,9 @@ Yeah, I know... It's useless...
 
 Tech used:
 
-SwiftUI
-CoreML
-LocationManager
-MotionManager
-Requests to the SunriseSunset API
-AVSession
+SwiftUI<br/>
+CoreML<br/>
+LocationManager<br/>
+MotionManager<br/>
+Requests to the SunriseSunset API<br/>
+AVSession<br/>

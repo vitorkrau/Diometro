@@ -1,17 +1,16 @@
 import SwiftUI
 import AVFoundation
 
+
 struct CustomCameraView: View {
     
-    @Binding var image: Image?
     @Binding var showCamera: Bool
     @Binding var uiImage: UIImage?
-    @State var didTapCapture: Bool = false
     
     var body: some View {
-        ZStack(alignment: .top) {
-            CustomCameraRepresentable(image: self.$image, didTapCapture: $didTapCapture, uiImage: self.$uiImage)
-            CaptureButtonView(didTapCapture: self.$didTapCapture, showCamera: self.$showCamera)
+        ZStack(alignment: .center) {
+            CustomCameraRepresentable(uiImage: self.$uiImage)
+            CaptureButtonView(showCamera: self.$showCamera)
         }
     }
 }
@@ -19,43 +18,23 @@ struct CustomCameraView: View {
 struct CustomCameraRepresentable: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-    @Binding var image: Image?
-    @Binding var didTapCapture: Bool
     @Binding var uiImage: UIImage?
     
     func makeUIViewController(context: Context) -> AVFoundationImplementation {
-        let controller = AVFoundationImplementation()
+        let controller = AVFoundationImplementation.instance
         controller.delegate = context.coordinator
         return controller
     }
     
-    func updateUIViewController(_ cameraViewController: AVFoundationImplementation, context: Context) {
-        
-        if(self.didTapCapture) {
-            cameraViewController.didTapRecord()
-        }
-    }
+    func updateUIViewController(_ cameraViewController: AVFoundationImplementation, context: Context) {}
     
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
+    func makeCoordinator() -> Coordinator { Coordinator(self) }
     
     class Coordinator: NSObject, UINavigationControllerDelegate, AVCapturePhotoCaptureDelegate {
         let parent: CustomCameraRepresentable
         
-        init(_ parent: CustomCameraRepresentable) {
-            self.parent = parent
-        }
+        init(_ parent: CustomCameraRepresentable) { self.parent = parent }
         
-        func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-            parent.didTapCapture = false
-            
-            if let imageData = photo.fileDataRepresentation() {
-                parent.image = Image(uiImage: UIImage(data: imageData)!)
-                parent.uiImage = UIImage(data: imageData)
-            }
-            parent.presentationMode.wrappedValue.dismiss()
-        }
     }
 }
 
@@ -137,13 +116,13 @@ class CustomCameraController: UIViewController {
 struct CaptureButtonView: View {
     @State private var animationAmount: CGFloat = 1
     @State private var animatedShadow = false
-    @Binding var didTapCapture: Bool
     @Binding var showCamera: Bool
-    @ObservedObject var mm : MotionManager = MotionManager()
+    @ObservedObject var mm: MotionManager = MotionManager()
+    @ObservedObject var av: AVFoundationImplementation = AVFoundationImplementation.instance
 
     var body: some View {
-        ZStack{
-            VStack(alignment: .center){
+        ZStack(alignment: .center){
+            VStack{
                 Button(action: { self.showCamera = false }){
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.white)
@@ -152,41 +131,40 @@ struct CaptureButtonView: View {
                         .padding(.top, 60)
                 }
                 Spacer()
-                Image(systemName: "camera.circle.fill")
-                    .resizable()
-                    .frame(width: 70, height: 70)
-                    .padding(.bottom, 100)
-                    .background(Color.white)
-                    .foregroundColor(.white)
-                    .clipShape(Circle())
-                    .overlay(
-                        Circle()
-                            .stroke(Color.white)
-                            .scaleEffect(animationAmount)
-                            .opacity(Double(2 - animationAmount))
-                            .animation(Animation.easeOut(duration: 1)
-                                .repeatForever(autoreverses: false))
-                    )
-                    .onAppear{
-                        self.animationAmount = 2
-                    }
-                    .onTapGesture {
-                        if self.mm.z > 0.4 && self.mm.z < 1.2{
-                            self.didTapCapture = true
-                        }
-                    }
             }
-            if self.mm.z < 0.4 || self.mm.z > 1.2{
-                Text("OLHA PRO CEU")
-                    .padding(.bottom, UIScreen.main.bounds.height - 300)
-                    .font(.system(size: 50, weight: .heavy, design: .rounded))
-                    .foregroundColor(.white)
-                    .shadow(color: .purple, radius: 10)
-                    .opacity(animatedShadow ? 0 : 1)
-                    .animation(Animation.easeOut(duration: 1).repeatForever(autoreverses: self.mm.z < 0.4 || self.mm.z > 1.2))
-                    .onAppear{ self.animatedShadow.toggle()}
+            if self.mm.z < 0.4 || self.mm.z > 1.2 {
+                lookAtTheSky()
             }
+            else{
+                if self.av.predictionLabel != "Sky" {
+                    lookAtTheSky()
+                }
+                else{
+                    setOverlay(timeOfTheDay: Time.instance.getTimeOfTheDay())
+                }
+            }
+            Spacer()
         }
+    }
+    
+    fileprivate func setOverlay(timeOfTheDay: String) -> some View{
+        return
+            Text(timeOfTheDay)
+            .font(.system(size: 70, weight: .heavy, design: .rounded))
+            .foregroundColor(.white)
+            .shadow(color: .gray, radius: 5)
+    }
+    
+    
+    fileprivate func lookAtTheSky() -> some View{
+        return
+            Text("MIRE PRO CÉU")
+                .font(.system(size: 36, weight: .semibold, design: .rounded))
+                .foregroundColor(.white)
+                .shadow(color: .black, radius: 10)
+                .opacity(animatedShadow ? 0 : 1)
+                .animation(Animation.easeOut(duration: 1).repeatForever(autoreverses: true))
+                .onAppear{ self.animatedShadow.toggle() }
     }
 }
 

@@ -9,20 +9,33 @@ import AVFoundation
 import UIKit
 import SwiftUI
 import CoreML
+import Vision
 
-
-class AVFoundationImplementation: UIViewController {
-    
+class AVFoundationImplementation: UIViewController, ObservableObject, AVCaptureVideoDataOutputSampleBufferDelegate {
+    static var instance = AVFoundationImplementation()
     var captureSession: AVCaptureSession?
     var rearCamera: AVCaptureDevice?
     var rearCameraInput: AVCaptureDeviceInput?
     var videoPreviewOutput: AVCaptureVideoDataOutput?
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var photoOutput: AVCapturePhotoOutput?
-    var predictionLabel: String = ""
+    
+    @Published var predictionLabel: String = ""
     var resizedImage: UIImage?
     var delegate: AVCapturePhotoCaptureDelegate?
-
+    
+    lazy var classificationRequest: VNCoreMLRequest = {
+        do {
+            let model = try VNCoreMLModel(for: Sky(configuration: MLModelConfiguration()).model)
+            let request = VNCoreMLRequest(model: model, completionHandler: {   [weak self] request, error in
+                self?.processClassifications(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        } catch {
+            fatalError("Failed to load Vision ML model: \(error)")
+        }}()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -38,19 +51,19 @@ class AVFoundationImplementation: UIViewController {
     func setup(){
         self.captureSession = AVCaptureSession()
         let session = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInWideAngleCamera], mediaType: AVMediaType.video, position: .back)
-
+        
         self.rearCamera = session.devices.first
         if let rearCamera = self.rearCamera {
             try? rearCamera.lockForConfiguration()
-            rearCamera.focusMode = .autoFocus
+            rearCamera.focusMode = .continuousAutoFocus
             rearCamera.unlockForConfiguration()
             self.rearCameraInput = try? AVCaptureDeviceInput(device: rearCamera)
             
             if let rearCameraInput = rearCameraInput{
                 // always make sure the AVCaptureSession can accept the selected input
                 if ((captureSession?.canAddInput(rearCameraInput)) != nil) {
-                // add the input to the current session
-                captureSession?.addInput(rearCameraInput)
+                    // add the input to the current session
+                    captureSession?.addInput(rearCameraInput)
                 }
             }
         }
@@ -60,7 +73,7 @@ class AVFoundationImplementation: UIViewController {
             self.videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
             self.videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
             self.videoPreviewLayer?.connection?.videoOrientation = .portrait
-
+            
             // then add the layer to your current view
             view.layer.insertSublayer(self.videoPreviewLayer!, at: 0)
             self.videoPreviewLayer?.frame = self.view.frame
@@ -72,67 +85,68 @@ class AVFoundationImplementation: UIViewController {
                 self.photoOutput = AVCapturePhotoOutput()
                 self.photoOutput?.setPreparedPhotoSettingsArray([AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])], completionHandler: nil)
                 captureSession.addOutput(self.photoOutput!)
-              // add the output to the current session
+                // add the output to the current session
                 captureSession.addOutput(self.videoPreviewOutput!)
             }
-        
+            
         }
         self.captureSession?.startRunning()
         
     }
-
-}
-
-extension AVFoundationImplementation: AVCaptureVideoDataOutputSampleBufferDelegate {
-
-    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection){
-            connection.videoOrientation = .portrait
-            if let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
-                let ciImage = CIImage(cvImageBuffer: imageBuffer)
-                let img = UIImage(ciImage: ciImage).resizeTo(CGSize(width: 299, height: 299))
-                if let uiImage = img {
-                    let pixelBuffer = uiImage.buffer()!
-                    let output = try? Sky(configuration: MLModelConfiguration()).prediction(image: pixelBuffer)
-                    DispatchQueue.main.async { [self] in
-                        self.resizedImage = uiImage
-                        self.predictionLabel = output?.classLabel ?? "I don't know! 😞"
-                        print(self.predictionLabel)
+    
+    func createClassificationsRequest(for image: UIImage) {
+        let orientation = CGImagePropertyOrientation(rawValue: UInt32(image.imageOrientation.rawValue))!
+        guard let ciImage = CIImage(image: image)
+        else {
+            fatalError("Unable to create \(CIImage.self) from \(image).")
+        }
+        DispatchQueue.global(qos: .userInitiated).async {
+            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+            do {
+                try handler.perform([self.classificationRequest])
+            }catch {
+                print("Failed to perform \n\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func processClassifications(for request: VNRequest, error: Error?) {
+        DispatchQueue.main.async {
+            guard let results = request.results
+            else {
+                self.predictionLabel = "Unable to classify image.\n"
+                return
+            }
+            let classifications = results as! [VNClassificationObservation]
+            if classifications.isEmpty {
+                self.predictionLabel = "Nothing recognized."
+            } else {
+                classifications.prefix(1).forEach{ classification in
+                    if classification.identifier == "Sky" && classification.confidence > 0.95{
+                       self.predictionLabel = "Sky"
+                    }
+                    else{
+                       self.predictionLabel = "Not Sky"
                     }
                 }
             }
         }
-
+    }
+    
+    func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection){
+        connection.videoOrientation = .portrait
+        if let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) {
+            let ciImage = CIImage(cvImageBuffer: imageBuffer)
+            let img = UIImage(ciImage: ciImage).resizeTo(CGSize(width: 299, height: 299))
+            if let uiImage = img {
+                createClassificationsRequest(for: uiImage)
+            }
+        }
+    }
+    
 }
 
 extension UIImage {
-    func buffer() -> CVPixelBuffer? {
-        return UIImage.buffer(from: self)
-    }
-    static func buffer(from image: UIImage) -> CVPixelBuffer? {
-        let attrs = [kCVPixelBufferCGImageCompatibilityKey: kCFBooleanTrue, kCVPixelBufferCGBitmapContextCompatibilityKey: kCFBooleanTrue] as CFDictionary
-        var pixelBuffer : CVPixelBuffer?
-        let status = CVPixelBufferCreate(kCFAllocatorDefault, Int(image.size.width), Int(image.size.height), kCVPixelFormatType_32ARGB, attrs, &pixelBuffer)
-        guard (status == kCVReturnSuccess) else {
-            return nil
-        }
-        
-        CVPixelBufferLockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-        let pixelData = CVPixelBufferGetBaseAddress(pixelBuffer!)
-        
-        let rgbColorSpace = CGColorSpaceCreateDeviceRGB()
-        let context = CGContext(data: pixelData, width: Int(image.size.width), height: Int(image.size.height), bitsPerComponent: 8, bytesPerRow: CVPixelBufferGetBytesPerRow(pixelBuffer!), space: rgbColorSpace, bitmapInfo: CGImageAlphaInfo.noneSkipFirst.rawValue)
-        
-        context?.translateBy(x: 0, y: image.size.height)
-        context?.scaleBy(x: 1.0, y: -1.0)
-        
-        UIGraphicsPushContext(context!)
-        image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
-        UIGraphicsPopContext()
-        CVPixelBufferUnlockBaseAddress(pixelBuffer!, CVPixelBufferLockFlags(rawValue: 0))
-        
-        return pixelBuffer
-    }
-    
     func resizeTo(_ size: CGSize) -> UIImage? {
         UIGraphicsBeginImageContext(size)
         draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
@@ -141,3 +155,5 @@ extension UIImage {
         return image
     }
 }
+
+

@@ -37,7 +37,7 @@ struct ContentView: View{
                             .frame(width: 87, height: 87)
                             .foregroundColor(.white)
                     }.fullScreenCover(isPresented: self.$showCamera, content: {
-                        CustomCameraView(image: self.$image, showCamera: self.$showCamera, uiImage: self.$uiImage).edgesIgnoringSafeArea(.all)
+                        CustomCameraView(showCamera: self.$showCamera, uiImage: self.$uiImage).edgesIgnoringSafeArea(.all)
                     })
                     
                 }

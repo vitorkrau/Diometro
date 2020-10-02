@@ -26,10 +26,23 @@ class Time{
     func IsItNight() -> Bool{
         let sunriseHour: [Int] = [(Int((sunsetSunrise?.sunrise.components(separatedBy: ":")[0])!)!) + getCurrentTimeZone(), (Int((sunsetSunrise?.sunrise.components(separatedBy: ":")[1])!)!)]
         let sunsetHour = [(Int((sunsetSunrise?.sunset.components(separatedBy: ":")[0])!)!) + getCurrentTimeZone() + 12, (Int((sunsetSunrise?.sunset.components(separatedBy: ":")[1])!)!)]
-        print(getTime())
-        print(sunriseHour)
-        print(sunsetHour)
-        if (getTime()[0] >= sunsetHour[0] && getTime()[1] >= sunsetHour[1]) || (getTime()[0] < sunriseHour[0] && getTime()[1] < sunriseHour[1]) { return true }
+        let currentTime = getTime()
+        
+        if currentTime[0] >= sunsetHour[0] || currentTime[0] <= sunriseHour[0]{
+            if currentTime[0] == sunsetHour[0]{
+                if currentTime[1] > sunsetHour[1]{
+                    return true
+                }
+                return false
+            }
+            if currentTime[0] == sunriseHour[0]{
+                if currentTime[1] < sunriseHour[1]{
+                    return true
+                }
+                return false
+            }
+            return true
+        }
         return false
     }
 
@@ -50,8 +63,8 @@ func scheduleNotifications() {
     content.body = "Você já viu se é dia ou noite hoje?"
     content.sound = UNNotificationSound.default
     var dateComponents = DateComponents()
-    dateComponents.hour = 04
-    dateComponents.minute = 00
+    dateComponents.hour = 15
+    dateComponents.minute = 47
     let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
 //  let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)

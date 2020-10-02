@@ -2,7 +2,7 @@ import Foundation
 import Combine
 import CoreLocation
 
-class LocationViewModel: NSObject, ObservableObject{
+class LocationViewModel: NSObject, ObservableObject {
     
     @Published var location: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
@@ -14,8 +14,9 @@ class LocationViewModel: NSObject, ObservableObject{
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
-        self.location = locationManager.location!.coordinate
+        self.location = locationManager.location?.coordinate ?? CLLocationCoordinate2D(latitude: -22.9138851, longitude: -43.7261746)
     }
+    
 }
 
 extension LocationViewModel: CLLocationManagerDelegate {

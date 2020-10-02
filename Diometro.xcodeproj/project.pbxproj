@@ -79,7 +79,6 @@
 				0A60257B251ADFFA002A7275 /* SunriseSunset */,
 				0A0CC048251533830067F663 /* DiometroApp.swift */,
 				0A0CC04A251533830067F663 /* ContentView.swift */,
-				0AA85F44251543BB008AEDB1 /* DayNightView.swift */,
 				0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */,
 				0A602576251AD3B4002A7275 /* Camera.swift */,
 				0A6BF4AE251C5ADE00E8F01E /* AV.swift */,
@@ -87,7 +86,6 @@
 				0A0CC04C251533840067F663 /* Assets.xcassets */,
 				0A0CC051251533840067F663 /* Info.plist */,
 				0A0CC04E251533840067F663 /* Preview Content */,
-				0A6BF4AB251C423900E8F01E /* ImageClassifier.swift */,
 			);
 			path = Diometro;
 			sourceTree = "<group>";
@@ -103,6 +101,8 @@
 		0A1D2553251A570900E6EBE6 /* Not Using */ = {
 			isa = PBXGroup;
 			children = (
+				0AA85F44251543BB008AEDB1 /* DayNightView.swift */,
+				0A6BF4AB251C423900E8F01E /* ImageClassifier.swift */,
 				0AA85F4125153A6C008AEDB1 /* CameraView1.swift */,
 			);
 			path = "Not Using";
@@ -332,6 +332,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_ASSET_PATHS = "\"Diometro/Preview Content\"";
 				DEVELOPMENT_TEAM = NYVJ3849N9;
 				ENABLE_PREVIEWS = YES;
@@ -354,6 +355,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.2;
 				DEVELOPMENT_ASSET_PATHS = "\"Diometro/Preview Content\"";
 				DEVELOPMENT_TEAM = NYVJ3849N9;
 				ENABLE_PREVIEWS = YES;

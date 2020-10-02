@@ -12,9 +12,6 @@ var APIurl = "https://api.sunrise-sunset.org/json?"
 func fetchTimes(completion: @escaping (Result<Results?, NetworkError>) -> Void){
     let lm = LocationViewModel()
     let url = URL(string: APIurl + "lat=\(lm.location.latitude)&lng=\(lm.location.longitude)")!
-    //var result: Result<SunriseSunset?, NetworkError>!
-    
-   // let semaphore = DispatchSemaphore(value: 0)
     
     URLSession.shared.dataTask(with: url){ (data, _, _) in
         if let data = data{
@@ -23,10 +20,8 @@ func fetchTimes(completion: @escaping (Result<Results?, NetworkError>) -> Void){
         }else{
             completion(.failure(.server))
         }
-        //semaphore.signal()
     }.resume()
-    
-    //semaphore.wait()
+
 }
 
 

@@ -62,11 +62,11 @@ func scheduleNotifications() {
     content.title = "Dia? Noite?"
     content.body = "Você já viu se é dia ou noite hoje?"
     content.sound = UNNotificationSound.default
-    var dateComponents = DateComponents()
-    dateComponents.hour = 15
-    dateComponents.minute = 47
-    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-//  let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+//    var dateComponents = DateComponents()
+//    dateComponents.hour = Int.random(in: 0...24)
+//    dateComponents.minute = Int.random(in: 0...60)
+//    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.random(in: 43200...86400), repeats: true)
     let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
     UNUserNotificationCenter.current().add(request)
 }

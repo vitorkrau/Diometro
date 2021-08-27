@@ -21,6 +21,7 @@
 		0A6BF4AF251C5ADE00E8F01E /* AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4AE251C5ADE00E8F01E /* AV.swift */; };
 		0AA85F4225153A6C008AEDB1 /* CameraView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA85F4125153A6C008AEDB1 /* CameraView1.swift */; };
 		0AA85F45251543BB008AEDB1 /* DayNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA85F44251543BB008AEDB1 /* DayNightView.swift */; };
+		0AD9A0A526D83E9400DE0D2B /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */; };
 		0AE5073525155BA700FBFF25 /* TimeOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		0A6BF4AE251C5ADE00E8F01E /* AV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AV.swift; sourceTree = "<group>"; };
 		0AA85F4125153A6C008AEDB1 /* CameraView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView1.swift; sourceTree = "<group>"; };
 		0AA85F44251543BB008AEDB1 /* DayNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightView.swift; sourceTree = "<group>"; };
+		0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
 		0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTheDay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 				0A0CC04C251533840067F663 /* Assets.xcassets */,
 				0A0CC051251533840067F663 /* Info.plist */,
 				0A0CC04E251533840067F663 /* Preview Content */,
+				0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */,
 			);
 			path = Diometro;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 				0A1D255A251A5D0C00E6EBE6 /* SunriseSunsetModel.swift in Sources */,
 				0A60257E251AEA85002A7275 /* MotionManager.swift in Sources */,
 				0AA85F45251543BB008AEDB1 /* DayNightView.swift in Sources */,
+				0AD9A0A526D83E9400DE0D2B /* ThanksView.swift in Sources */,
 				0A1D2557251A5C1900E6EBE6 /* SunsetSunriseAPI.swift in Sources */,
 				0A6BF4AC251C423900E8F01E /* ImageClassifier.swift in Sources */,
 				0A6BF4AF251C5ADE00E8F01E /* AV.swift in Sources */,
@@ -332,12 +336,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_ASSET_PATHS = "\"Diometro/Preview Content\"";
 				DEVELOPMENT_TEAM = NYVJ3849N9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Diometro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -345,7 +349,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vitorkrau.diometro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -355,12 +359,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.2;
+				CURRENT_PROJECT_VERSION = 1.0.7;
 				DEVELOPMENT_ASSET_PATHS = "\"Diometro/Preview Content\"";
 				DEVELOPMENT_TEAM = NYVJ3849N9;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Diometro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,7 +372,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vitorkrau.diometro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

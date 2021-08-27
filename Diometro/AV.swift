@@ -110,6 +110,10 @@ class AVFoundationImplementation: UIViewController, ObservableObject, AVCaptureV
         }
     }
     
+    func stopSession(){
+        self.captureSession?.stopRunning()
+    }
+    
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             guard let results = request.results

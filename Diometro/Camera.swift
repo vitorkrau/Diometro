@@ -6,11 +6,12 @@ struct CustomCameraView: View {
     
     @Binding var showCamera: Bool
     @Binding var uiImage: UIImage?
+    @State var av = AVFoundationImplementation()
     
     var body: some View {
         ZStack(alignment: .center) {
-            CustomCameraRepresentable(uiImage: self.$uiImage)
-            CaptureButtonView(showCamera: self.$showCamera)
+            CustomCameraRepresentable(uiImage: self.$uiImage, av: self.$av)
+            CaptureButtonView(showCamera: self.$showCamera, av1: self.$av)
         }
     }
 }
@@ -19,9 +20,10 @@ struct CustomCameraRepresentable: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var uiImage: UIImage?
+    @Binding var av: AVFoundationImplementation
     
     func makeUIViewController(context: Context) -> AVFoundationImplementation {
-        let controller = AVFoundationImplementation.instance
+        let controller = av
         controller.delegate = context.coordinator
         return controller
     }
@@ -117,13 +119,16 @@ struct CaptureButtonView: View {
     @State private var animationAmount: CGFloat = 1
     @State private var animatedShadow = false
     @Binding var showCamera: Bool
+    @Binding var av1: AVFoundationImplementation
     @ObservedObject var mm: MotionManager = MotionManager()
-    @ObservedObject var av: AVFoundationImplementation = AVFoundationImplementation.instance
 
     var body: some View {
         ZStack(alignment: .center){
             VStack{
-                Button(action: { self.showCamera = false }){
+                Button(action: {
+                        self.showCamera = false
+                        self.av1.stopSession()
+                }){
                     Image(systemName: "xmark.circle.fill")
                         .foregroundColor(.white)
                         .font(.system(size: 25, weight: .bold, design: .rounded))
@@ -136,7 +141,7 @@ struct CaptureButtonView: View {
                 lookAtTheSky()
             }
             else{
-                if self.av.predictionLabel != "Sky" {
+                if self.av1.predictionLabel != "Sky" {
                     lookAtTheSky()
                 }
                 else{

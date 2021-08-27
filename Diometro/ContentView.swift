@@ -20,6 +20,21 @@ struct ContentView: View{
             }
             else{
                 VStack(alignment: .center){
+                    HStack {
+                        Spacer()
+                        NavigationLink(
+                            destination: ThanksView())
+                        {
+                            Image(systemName: "ellipsis.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.white)
+                                .padding(.top, 50)
+                                .padding(.trailing, 20)
+                        }
+                    }
+                    
+                    Spacer()
                     Text("DIÔMETRO")
                         .font(.system(size: 47, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
@@ -39,6 +54,8 @@ struct ContentView: View{
                     }.fullScreenCover(isPresented: self.$showCamera, content: {
                         CustomCameraView(showCamera: self.$showCamera, uiImage: self.$uiImage).edgesIgnoringSafeArea(.all)
                     })
+                    Spacer()
+                    
                     
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,6 +64,7 @@ struct ContentView: View{
                 .navigationBarHidden(true)
             }
         }
+        .accentColor(.white)
     }
     
     fileprivate func setBackground() -> LinearGradient{

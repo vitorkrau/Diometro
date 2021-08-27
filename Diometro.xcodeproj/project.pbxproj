@@ -14,13 +14,12 @@
 		0A1D2551251A52F200E6EBE6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2550251A52F200E6EBE6 /* LocationManager.swift */; };
 		0A1D2557251A5C1900E6EBE6 /* SunsetSunriseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2556251A5C1900E6EBE6 /* SunsetSunriseAPI.swift */; };
 		0A1D255A251A5D0C00E6EBE6 /* SunriseSunsetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2559251A5D0C00E6EBE6 /* SunriseSunsetModel.swift */; };
+		0A56E0DF26D86AE6000A408A /* DayNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56E0DE26D86AE6000A408A /* DayNightView.swift */; };
+		0A56E0E126D86B36000A408A /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56E0E026D86B36000A408A /* ImageClassifier.swift */; };
 		0A602577251AD3B4002A7275 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A602576251AD3B4002A7275 /* Camera.swift */; };
 		0A60257E251AEA85002A7275 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A60257D251AEA85002A7275 /* MotionManager.swift */; };
 		0A6BF4A9251C422400E8F01E /* Sky.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4A8251C422400E8F01E /* Sky.mlmodel */; };
-		0A6BF4AC251C423900E8F01E /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4AB251C423900E8F01E /* ImageClassifier.swift */; };
 		0A6BF4AF251C5ADE00E8F01E /* AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4AE251C5ADE00E8F01E /* AV.swift */; };
-		0AA85F4225153A6C008AEDB1 /* CameraView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA85F4125153A6C008AEDB1 /* CameraView1.swift */; };
-		0AA85F45251543BB008AEDB1 /* DayNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AA85F44251543BB008AEDB1 /* DayNightView.swift */; };
 		0AD9A0A526D83E9400DE0D2B /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */; };
 		0AE5073525155BA700FBFF25 /* TimeOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */; };
 /* End PBXBuildFile section */
@@ -35,13 +34,12 @@
 		0A1D2550251A52F200E6EBE6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0A1D2556251A5C1900E6EBE6 /* SunsetSunriseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetSunriseAPI.swift; sourceTree = "<group>"; };
 		0A1D2559251A5D0C00E6EBE6 /* SunriseSunsetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetModel.swift; sourceTree = "<group>"; };
+		0A56E0DE26D86AE6000A408A /* DayNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightView.swift; sourceTree = "<group>"; };
+		0A56E0E026D86B36000A408A /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		0A602576251AD3B4002A7275 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		0A60257D251AEA85002A7275 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		0A6BF4A8251C422400E8F01E /* Sky.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Sky.mlmodel; sourceTree = "<group>"; };
-		0A6BF4AB251C423900E8F01E /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 		0A6BF4AE251C5ADE00E8F01E /* AV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AV.swift; sourceTree = "<group>"; };
-		0AA85F4125153A6C008AEDB1 /* CameraView1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView1.swift; sourceTree = "<group>"; };
-		0AA85F44251543BB008AEDB1 /* DayNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightView.swift; sourceTree = "<group>"; };
 		0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
 		0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTheDay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,8 +58,8 @@
 		0A0CC03C251533830067F663 = {
 			isa = PBXGroup;
 			children = (
+				0A56E0E026D86B36000A408A /* ImageClassifier.swift */,
 				0A0CC047251533830067F663 /* Diometro */,
-				0A1D2553251A570900E6EBE6 /* Not Using */,
 				0A0CC046251533830067F663 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +79,7 @@
 				0A60257B251ADFFA002A7275 /* SunriseSunset */,
 				0A0CC048251533830067F663 /* DiometroApp.swift */,
 				0A0CC04A251533830067F663 /* ContentView.swift */,
+				0A56E0DE26D86AE6000A408A /* DayNightView.swift */,
 				0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */,
 				0A602576251AD3B4002A7275 /* Camera.swift */,
 				0A6BF4AE251C5ADE00E8F01E /* AV.swift */,
@@ -99,16 +98,6 @@
 				0A0CC04F251533840067F663 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		0A1D2553251A570900E6EBE6 /* Not Using */ = {
-			isa = PBXGroup;
-			children = (
-				0AA85F44251543BB008AEDB1 /* DayNightView.swift */,
-				0A6BF4AB251C423900E8F01E /* ImageClassifier.swift */,
-				0AA85F4125153A6C008AEDB1 /* CameraView1.swift */,
-			);
-			path = "Not Using";
 			sourceTree = "<group>";
 		};
 		0A60257B251ADFFA002A7275 /* SunriseSunset */ = {
@@ -194,14 +183,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A56E0DF26D86AE6000A408A /* DayNightView.swift in Sources */,
 				0A1D255A251A5D0C00E6EBE6 /* SunriseSunsetModel.swift in Sources */,
 				0A60257E251AEA85002A7275 /* MotionManager.swift in Sources */,
-				0AA85F45251543BB008AEDB1 /* DayNightView.swift in Sources */,
 				0AD9A0A526D83E9400DE0D2B /* ThanksView.swift in Sources */,
 				0A1D2557251A5C1900E6EBE6 /* SunsetSunriseAPI.swift in Sources */,
-				0A6BF4AC251C423900E8F01E /* ImageClassifier.swift in Sources */,
 				0A6BF4AF251C5ADE00E8F01E /* AV.swift in Sources */,
-				0AA85F4225153A6C008AEDB1 /* CameraView1.swift in Sources */,
+				0A56E0E126D86B36000A408A /* ImageClassifier.swift in Sources */,
 				0A0CC04B251533830067F663 /* ContentView.swift in Sources */,
 				0A0CC049251533830067F663 /* DiometroApp.swift in Sources */,
 				0A1D2551251A52F200E6EBE6 /* LocationManager.swift in Sources */,

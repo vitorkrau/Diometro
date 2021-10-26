@@ -8,10 +8,14 @@
 import UserNotifications
 import SwiftUI
 
-class Time{
-    static var instance = Time()
-    var sunsetSunrise : Results? = Results(sunrise: "06:00", sunset: "18:00", solarNoon: "", dayLength: "")
+class TimeManager: ObservableObject {
     
+    @Published var sunsetSunrise: Results? = Results(sunrise: "06:00", sunset: "18:00", solarNoon: "", dayLength: "")
+    
+    init(_ time: Results? = nil) {
+        sunsetSunrise = time
+    }
+   
     //Get actual hour and minute
     private func getTime() -> [Int]{
         return [Calendar.current.component(.hour, from: Date()), Calendar.current.component(.minute, from: Date())]
@@ -48,25 +52,8 @@ class Time{
 
     //Get currentTimeZone
     func getCurrentTimeZone() -> Int {
-            let localTimeZoneAbbreviation: Int = TimeZone.current.secondsFromGMT()
-            let gmtAbbreviation = (localTimeZoneAbbreviation / 3600)
-            return gmtAbbreviation
+        let localTimeZoneAbbreviation: Int = TimeZone.current.secondsFromGMT()
+        let gmtAbbreviation = (localTimeZoneAbbreviation / 3600)
+        return gmtAbbreviation
     }
-}
-
-
-///Global Function -- Set Notification Reminder
-func scheduleNotifications() {
-    UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-    let content = UNMutableNotificationContent()
-    content.title = "Dia? Noite?"
-    content.body = "Você já viu se é dia ou noite hoje?"
-    content.sound = UNNotificationSound.default
-//    var dateComponents = DateComponents()
-//    dateComponents.hour = Int.random(in: 0...24)
-//    dateComponents.minute = Int.random(in: 0...60)
-//    let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: Double.random(in: 43200...86400), repeats: true)
-    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-    UNUserNotificationCenter.current().add(request)
 }

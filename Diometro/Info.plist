@@ -23,9 +23,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Preciso que você libere a câmera para que eu possa te ajudar.</string>
+	<string>Para descobrir se está de dia ou de noite, preciso ter acesso a sua câmera.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Preciso da sua localização para ver quando o sol se põe</string>
+	<string>Para ter mais precisão sobre o momento do dia em que estamos, preciso saber sua localização.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

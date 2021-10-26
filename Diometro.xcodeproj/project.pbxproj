@@ -8,40 +8,60 @@
 
 /* Begin PBXBuildFile section */
 		0A0CC049251533830067F663 /* DiometroApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CC048251533830067F663 /* DiometroApp.swift */; };
-		0A0CC04B251533830067F663 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CC04A251533830067F663 /* ContentView.swift */; };
+		0A0CC04B251533830067F663 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0CC04A251533830067F663 /* HomeView.swift */; };
 		0A0CC04D251533840067F663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CC04C251533840067F663 /* Assets.xcassets */; };
 		0A0CC050251533840067F663 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A0CC04F251533840067F663 /* Preview Assets.xcassets */; };
 		0A1D2551251A52F200E6EBE6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2550251A52F200E6EBE6 /* LocationManager.swift */; };
-		0A1D2557251A5C1900E6EBE6 /* SunsetSunriseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2556251A5C1900E6EBE6 /* SunsetSunriseAPI.swift */; };
 		0A1D255A251A5D0C00E6EBE6 /* SunriseSunsetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D2559251A5D0C00E6EBE6 /* SunriseSunsetModel.swift */; };
 		0A56E0DF26D86AE6000A408A /* DayNightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56E0DE26D86AE6000A408A /* DayNightView.swift */; };
 		0A56E0E126D86B36000A408A /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A56E0E026D86B36000A408A /* ImageClassifier.swift */; };
-		0A602577251AD3B4002A7275 /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A602576251AD3B4002A7275 /* Camera.swift */; };
+		0A59A64E27270FB7006634EA /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59A64D27270FB7006634EA /* Repository.swift */; };
+		0A59A65027270FD0006634EA /* AppContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A59A64F27270FD0006634EA /* AppContainer.swift */; };
+		0A602577251AD3B4002A7275 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A602576251AD3B4002A7275 /* CameraManager.swift */; };
 		0A60257E251AEA85002A7275 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A60257D251AEA85002A7275 /* MotionManager.swift */; };
 		0A6BF4A9251C422400E8F01E /* Sky.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4A8251C422400E8F01E /* Sky.mlmodel */; };
-		0A6BF4AF251C5ADE00E8F01E /* AV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4AE251C5ADE00E8F01E /* AV.swift */; };
+		0A6BF4AF251C5ADE00E8F01E /* AVFoundationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BF4AE251C5ADE00E8F01E /* AVFoundationManager.swift */; };
+		0ABC74D227278F01007C7514 /* HomeFeaturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC74D127278F01007C7514 /* HomeFeaturesView.swift */; };
+		0ABC74D42727918C007C7514 /* QuotableAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC74D32727918C007C7514 /* QuotableAPI.swift */; };
+		0ABC74D727279B1F007C7514 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC74D627279B1F007C7514 /* Extensions.swift */; };
+		0ABC74D927279F2F007C7514 /* FactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC74D827279F2F007C7514 /* FactModel.swift */; };
+		0ABC74DB2727A693007C7514 /* BoredModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC74DA2727A693007C7514 /* BoredModel.swift */; };
+		0ABC74E02727DE1C007C7514 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABC74DF2727DE1C007C7514 /* NotificationManager.swift */; };
+		0AD8E3AE2725B17400B12501 /* DiometroAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8E3AD2725B17400B12501 /* DiometroAPIModel.swift */; };
+		0AD8E3B12725B34200B12501 /* APIRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8E3B02725B34200B12501 /* APIRequests.swift */; };
+		0AD8E3B42725BBF400B12501 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8E3B32725BBF400B12501 /* CameraView.swift */; };
 		0AD9A0A526D83E9400DE0D2B /* ThanksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */; };
-		0AE5073525155BA700FBFF25 /* TimeOfTheDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */; };
+		0AE5073525155BA700FBFF25 /* TimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE5073425155BA700FBFF25 /* TimeManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0A0CC045251533830067F663 /* Diometro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diometro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A0CC048251533830067F663 /* DiometroApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiometroApp.swift; sourceTree = "<group>"; };
-		0A0CC04A251533830067F663 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0A0CC04A251533830067F663 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		0A0CC04C251533840067F663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A0CC04F251533840067F663 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0A0CC051251533840067F663 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A1D2550251A52F200E6EBE6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		0A1D2556251A5C1900E6EBE6 /* SunsetSunriseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunsetSunriseAPI.swift; sourceTree = "<group>"; };
 		0A1D2559251A5D0C00E6EBE6 /* SunriseSunsetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetModel.swift; sourceTree = "<group>"; };
 		0A56E0DE26D86AE6000A408A /* DayNightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayNightView.swift; sourceTree = "<group>"; };
 		0A56E0E026D86B36000A408A /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
-		0A602576251AD3B4002A7275 /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		0A59A64D27270FB7006634EA /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		0A59A64F27270FD0006634EA /* AppContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainer.swift; sourceTree = "<group>"; };
+		0A602576251AD3B4002A7275 /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
 		0A60257D251AEA85002A7275 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 		0A6BF4A8251C422400E8F01E /* Sky.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Sky.mlmodel; sourceTree = "<group>"; };
-		0A6BF4AE251C5ADE00E8F01E /* AV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AV.swift; sourceTree = "<group>"; };
+		0A6BF4AE251C5ADE00E8F01E /* AVFoundationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVFoundationManager.swift; sourceTree = "<group>"; };
+		0ABC74D127278F01007C7514 /* HomeFeaturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeaturesView.swift; sourceTree = "<group>"; };
+		0ABC74D32727918C007C7514 /* QuotableAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuotableAPI.swift; sourceTree = "<group>"; };
+		0ABC74D627279B1F007C7514 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0ABC74D827279F2F007C7514 /* FactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactModel.swift; sourceTree = "<group>"; };
+		0ABC74DA2727A693007C7514 /* BoredModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoredModel.swift; sourceTree = "<group>"; };
+		0ABC74DF2727DE1C007C7514 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0AD8E3AD2725B17400B12501 /* DiometroAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiometroAPIModel.swift; sourceTree = "<group>"; };
+		0AD8E3B02725B34200B12501 /* APIRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequests.swift; sourceTree = "<group>"; };
+		0AD8E3B32725BBF400B12501 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThanksView.swift; sourceTree = "<group>"; };
-		0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeOfTheDay.swift; sourceTree = "<group>"; };
+		0AE5073425155BA700FBFF25 /* TimeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +78,6 @@
 		0A0CC03C251533830067F663 = {
 			isa = PBXGroup;
 			children = (
-				0A56E0E026D86B36000A408A /* ImageClassifier.swift */,
 				0A0CC047251533830067F663 /* Diometro */,
 				0A0CC046251533830067F663 /* Products */,
 			);
@@ -75,19 +94,15 @@
 		0A0CC047251533830067F663 /* Diometro */ = {
 			isa = PBXGroup;
 			children = (
-				0A6BF4A8251C422400E8F01E /* Sky.mlmodel */,
-				0A60257B251ADFFA002A7275 /* SunriseSunset */,
-				0A0CC048251533830067F663 /* DiometroApp.swift */,
-				0A0CC04A251533830067F663 /* ContentView.swift */,
-				0A56E0DE26D86AE6000A408A /* DayNightView.swift */,
-				0AE5073425155BA700FBFF25 /* TimeOfTheDay.swift */,
-				0A602576251AD3B4002A7275 /* Camera.swift */,
-				0A6BF4AE251C5ADE00E8F01E /* AV.swift */,
-				0A60257D251AEA85002A7275 /* MotionManager.swift */,
+				0ABC74D527279B15007C7514 /* Common */,
+				0AD8E3B62725BC8900B12501 /* Lifecycle */,
+				0AD8E3B52725BC4D00B12501 /* Manager */,
+				0AD8E3B22725BBB100B12501 /* View */,
+				0AD8E3AF2725B1EE00B12501 /* Network */,
+				0AD8E3AC2725B15E00B12501 /* Model */,
 				0A0CC04C251533840067F663 /* Assets.xcassets */,
 				0A0CC051251533840067F663 /* Info.plist */,
 				0A0CC04E251533840067F663 /* Preview Content */,
-				0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */,
 			);
 			path = Diometro;
 			sourceTree = "<group>";
@@ -100,14 +115,69 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		0A60257B251ADFFA002A7275 /* SunriseSunset */ = {
+		0ABC74D527279B15007C7514 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				0A1D2550251A52F200E6EBE6 /* LocationManager.swift */,
-				0A1D2556251A5C1900E6EBE6 /* SunsetSunriseAPI.swift */,
-				0A1D2559251A5D0C00E6EBE6 /* SunriseSunsetModel.swift */,
+				0ABC74D627279B1F007C7514 /* Extensions.swift */,
 			);
-			path = SunriseSunset;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0AD8E3AC2725B15E00B12501 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A6BF4A8251C422400E8F01E /* Sky.mlmodel */,
+				0A1D2559251A5D0C00E6EBE6 /* SunriseSunsetModel.swift */,
+				0AD8E3AD2725B17400B12501 /* DiometroAPIModel.swift */,
+				0ABC74D32727918C007C7514 /* QuotableAPI.swift */,
+				0ABC74D827279F2F007C7514 /* FactModel.swift */,
+				0ABC74DA2727A693007C7514 /* BoredModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0AD8E3AF2725B1EE00B12501 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0AD8E3B02725B34200B12501 /* APIRequests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0AD8E3B22725BBB100B12501 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0AD9A0A426D83E9400DE0D2B /* ThanksView.swift */,
+				0AD8E3B32725BBF400B12501 /* CameraView.swift */,
+				0A0CC04A251533830067F663 /* HomeView.swift */,
+				0A56E0DE26D86AE6000A408A /* DayNightView.swift */,
+				0ABC74D127278F01007C7514 /* HomeFeaturesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0AD8E3B52725BC4D00B12501 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				0AE5073425155BA700FBFF25 /* TimeManager.swift */,
+				0A1D2550251A52F200E6EBE6 /* LocationManager.swift */,
+				0A602576251AD3B4002A7275 /* CameraManager.swift */,
+				0A6BF4AE251C5ADE00E8F01E /* AVFoundationManager.swift */,
+				0A60257D251AEA85002A7275 /* MotionManager.swift */,
+				0A56E0E026D86B36000A408A /* ImageClassifier.swift */,
+				0A59A64D27270FB7006634EA /* Repository.swift */,
+				0A59A64F27270FD0006634EA /* AppContainer.swift */,
+				0ABC74DF2727DE1C007C7514 /* NotificationManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		0AD8E3B62725BC8900B12501 /* Lifecycle */ = {
+			isa = PBXGroup;
+			children = (
+				0A0CC048251533830067F663 /* DiometroApp.swift */,
+			);
+			path = Lifecycle;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,19 +253,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABC74D42727918C007C7514 /* QuotableAPI.swift in Sources */,
 				0A56E0DF26D86AE6000A408A /* DayNightView.swift in Sources */,
 				0A1D255A251A5D0C00E6EBE6 /* SunriseSunsetModel.swift in Sources */,
 				0A60257E251AEA85002A7275 /* MotionManager.swift in Sources */,
 				0AD9A0A526D83E9400DE0D2B /* ThanksView.swift in Sources */,
-				0A1D2557251A5C1900E6EBE6 /* SunsetSunriseAPI.swift in Sources */,
-				0A6BF4AF251C5ADE00E8F01E /* AV.swift in Sources */,
+				0A6BF4AF251C5ADE00E8F01E /* AVFoundationManager.swift in Sources */,
 				0A56E0E126D86B36000A408A /* ImageClassifier.swift in Sources */,
-				0A0CC04B251533830067F663 /* ContentView.swift in Sources */,
+				0A59A65027270FD0006634EA /* AppContainer.swift in Sources */,
+				0AD8E3B12725B34200B12501 /* APIRequests.swift in Sources */,
+				0ABC74DB2727A693007C7514 /* BoredModel.swift in Sources */,
+				0ABC74D927279F2F007C7514 /* FactModel.swift in Sources */,
+				0A0CC04B251533830067F663 /* HomeView.swift in Sources */,
 				0A0CC049251533830067F663 /* DiometroApp.swift in Sources */,
+				0ABC74D227278F01007C7514 /* HomeFeaturesView.swift in Sources */,
 				0A1D2551251A52F200E6EBE6 /* LocationManager.swift in Sources */,
 				0A6BF4A9251C422400E8F01E /* Sky.mlmodel in Sources */,
-				0A602577251AD3B4002A7275 /* Camera.swift in Sources */,
-				0AE5073525155BA700FBFF25 /* TimeOfTheDay.swift in Sources */,
+				0A59A64E27270FB7006634EA /* Repository.swift in Sources */,
+				0ABC74D727279B1F007C7514 /* Extensions.swift in Sources */,
+				0A602577251AD3B4002A7275 /* CameraManager.swift in Sources */,
+				0AE5073525155BA700FBFF25 /* TimeManager.swift in Sources */,
+				0AD8E3AE2725B17400B12501 /* DiometroAPIModel.swift in Sources */,
+				0AD8E3B42725BBF400B12501 /* CameraView.swift in Sources */,
+				0ABC74E02727DE1C007C7514 /* NotificationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,17 +404,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.7;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_ASSET_PATHS = "\"Diometro/Preview Content\"";
-				DEVELOPMENT_TEAM = NYVJ3849N9;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Diometro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vitorkrau.diometro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vitorkrauLES.diometro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -347,17 +427,17 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.7;
+				CURRENT_PROJECT_VERSION = 1.0.9;
 				DEVELOPMENT_ASSET_PATHS = "\"Diometro/Preview Content\"";
-				DEVELOPMENT_TEAM = NYVJ3849N9;
+				DEVELOPMENT_TEAM = 67AYPRFZH8;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Diometro/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vitorkrau.diometro;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vitorkrauLES.diometro;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

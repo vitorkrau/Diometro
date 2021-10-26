@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-struct ContentView: View{
+struct HomeView: View{
     
     @State var showCamera: Bool = false
     @State var image: Image?
     @State var uiImage: UIImage?
+    var timeManager: TimeManager
     
     var body: some View {
         NavigationView {
             if self.image != nil{
-                DayNightView(image: self.$image, uiImage: self.$uiImage)
+                DayNightView(image: self.$image, uiImage: self.$uiImage, timeManager: timeManager)
             }
             else{
                 VStack(alignment: .center){
@@ -52,7 +53,8 @@ struct ContentView: View{
                             .frame(width: 87, height: 87)
                             .foregroundColor(.white)
                     }.fullScreenCover(isPresented: self.$showCamera, content: {
-                        CustomCameraView(showCamera: self.$showCamera, uiImage: self.$uiImage).edgesIgnoringSafeArea(.all)
+                        CustomCameraView(showCamera: self.$showCamera, uiImage: self.$uiImage, timeManager: timeManager)
+                            .edgesIgnoringSafeArea(.all)
                     })
                     Spacer()
                     
@@ -73,8 +75,9 @@ struct ContentView: View{
 }
 
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    var timeManager: Time = Time()
+//    static var previews: some View {
+//        ContentView(timeManager: timeManager)
+//    }
+//}

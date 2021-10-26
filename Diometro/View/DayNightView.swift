@@ -9,9 +9,12 @@ import SwiftUI
 
 
 struct DayNightView: View {
+    
     @Binding var image: Image?
     @Binding var uiImage: UIImage?
     @ObservedObject var im: ImageClassifier = ImageClassifier()
+    var timeManager: TimeManager
+    
     var body: some View {
         ZStack{
             if self.image != nil{
@@ -20,7 +23,7 @@ struct DayNightView: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea(.all)
                 VStack{
-                    setOverlay(timeOfTheDay: Time.instance.getTimeOfTheDay())
+                    setOverlay(timeOfTheDay: timeManager.getTimeOfTheDay())
                         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
                         .padding(.top, 100)
                     Spacer()

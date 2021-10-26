@@ -16,10 +16,11 @@ struct ThanksView: View {
                     .font(.system(size: 25, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .padding(.top, 64)
-                Spacer()
+                    .padding(.bottom, 32)
                 PersonCard(image: "bi", title: "Bianca Pirmez", role: "App Store Designer", instagram: "bianca_pirmez", behanceLink: "biancapirmez")
+                PersonCard(image: "breno", title: "Breno Guimarães", role: "Piloto", behance: false, instagram: "brenomedguimaraes")
                 PersonCard(image: "soares", title: "Matheus Soares", role: "A Mente Brilhante", behance: false, instagram: "matheussssssssssss")
-                PersonCard(image: "", title: "Mohamed Lucas", role: "App Designer", instagram: "mohamedsuspeito", behanceLink: "mohamedlucas")
+                PersonCard(image: "lucas", title: "Mohamed Lucas", role: "App Designer", instagram: "mohamedsuspeito", behanceLink: "mohamedlucas")
                 Spacer()
                 Text("Feito por Vitor Krau")
                     .font(.system(size: 17, weight: .bold, design: .rounded))
@@ -118,7 +119,7 @@ struct PersonCard: View {
         .frame(maxWidth: .infinity, maxHeight: 120, alignment: .center)
         .background(Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.1))
         .modifier(CardModifier())
-        .padding(.all, 10)
+        .padding(.horizontal, 10)
         
     }
 }

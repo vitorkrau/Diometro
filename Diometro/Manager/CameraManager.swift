@@ -2,20 +2,6 @@ import SwiftUI
 import AVFoundation
 
 
-struct CustomCameraView: View {
-    
-    @Binding var showCamera: Bool
-    @Binding var uiImage: UIImage?
-    @State var av = AVFoundationImplementation()
-    
-    var body: some View {
-        ZStack(alignment: .center) {
-            CustomCameraRepresentable(uiImage: self.$uiImage, av: self.$av)
-            CaptureButtonView(showCamera: self.$showCamera, av1: self.$av)
-        }
-    }
-}
-
 struct CustomCameraRepresentable: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
@@ -121,19 +107,23 @@ struct CaptureButtonView: View {
     @Binding var showCamera: Bool
     @Binding var av1: AVFoundationImplementation
     @ObservedObject var mm: MotionManager = MotionManager()
+    var timeManager: TimeManager
 
     var body: some View {
         ZStack(alignment: .center){
             VStack{
-                Button(action: {
-                        self.showCamera = false
-                        self.av1.stopSession()
-                }){
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.white)
-                        .font(.system(size: 25, weight: .bold, design: .rounded))
-                        .padding(.leading, 300)
-                        .padding(.top, 60)
+                HStack {
+                    Spacer()
+                    Button(action: {
+                            self.showCamera = false
+                            self.av1.stopSession()
+                    }){
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.white)
+                            .font(.system(size: 25, weight: .bold, design: .rounded))
+                            .padding(.top, 50)
+                            .padding(.trailing, 20)
+                    }
                 }
                 Spacer()
             }
@@ -145,7 +135,7 @@ struct CaptureButtonView: View {
                     lookAtTheSky()
                 }
                 else{
-                    setOverlay(timeOfTheDay: Time.instance.getTimeOfTheDay())
+                    setOverlay(timeOfTheDay: timeManager.getTimeOfTheDay())
                 }
             }
             Spacer()

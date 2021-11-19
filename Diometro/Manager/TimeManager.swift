@@ -55,5 +55,6 @@ class TimeManager: ObservableObject {
         let localTimeZoneAbbreviation: Int = TimeZone.current.secondsFromGMT()
         let gmtAbbreviation = (localTimeZoneAbbreviation / 3600)
         return gmtAbbreviation
+
     }
 }
